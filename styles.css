@@ -94,6 +94,16 @@ body {
     width: 100%;
 }
 
+.nav-link.active {
+    color: #0891b2;
+    font-weight: 600;
+}
+
+.nav-link.active::after {
+    width: 100%;
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+}
+
 .hamburger {
     display: none;
     flex-direction: column;
@@ -775,7 +785,7 @@ body {
 
 .tag {
     background: #e0f2fe;
-    color: #2563eb;
+    color: #0891b2;
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
     font-size: 0.875rem;
@@ -797,7 +807,7 @@ body {
     display: block;
     font-size: 1.5rem;
     font-weight: 800;
-    color: #2563eb;
+    color: #0891b2;
     margin-bottom: 0.25rem;
 }
 
@@ -843,7 +853,7 @@ body {
 .member-graphic {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -882,7 +892,7 @@ body {
 }
 
 .member-info .position {
-    color: #2563eb;
+    color: #0891b2;
     font-weight: 600;
     margin-bottom: 1rem;
 }
@@ -913,7 +923,7 @@ body {
 }
 
 .social-links a:hover {
-    background: #2563eb;
+    background: #0891b2;
     color: white;
     transform: translateY(-3px);
 }
@@ -955,7 +965,7 @@ body {
 .contact-icon {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -1021,8 +1031,8 @@ body {
 .form-group textarea:focus,
 .form-group select:focus {
     outline: none;
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    border-color: #0891b2;
+    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1);
 }
 
 .form-group textarea {
@@ -1034,7 +1044,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
     color: white;
     padding: 1rem 2rem;
     border: none;
@@ -1049,7 +1059,7 @@ body {
 
 .submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 10px 25px rgba(8, 145, 178, 0.3);
 }
 
 .submit-btn i {
@@ -1084,7 +1094,7 @@ body {
 
 .footer-logo i {
     margin-right: 0.5rem;
-    color: #2563eb;
+    color: #0891b2;
 }
 
 .footer-section p {
@@ -1115,7 +1125,7 @@ body {
 }
 
 .footer-section ul li a:hover {
-    color: #2563eb;
+    color: #0891b2;
 }
 
 .social-icons {
@@ -1137,7 +1147,7 @@ body {
 }
 
 .social-icon:hover {
-    background: #2563eb;
+    background: #0891b2;
     transform: translateY(-3px);
 }
 
@@ -1318,10 +1328,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #2563eb;
+    background: #0891b2;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #1d4ed8;
+    background: #0e7490;
 }
