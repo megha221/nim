@@ -4,11 +4,153 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NIMHANS AI-CDSS - Alcohol & Nicotine Use Disorders Treatment</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+    <link rel="stylesheet" href="styles.css" onerror="this.onerror=null; this.href='./styles.css';">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script>
+        // CSS Loading Fallback
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if CSS is loaded
+            const testElement = document.createElement('div');
+            testElement.style.position = 'absolute';
+            testElement.style.left = '-9999px';
+            testElement.style.top = '-9999px';
+            testElement.className = 'css-test';
+            document.body.appendChild(testElement);
+            
+            const computedStyle = window.getComputedStyle(testElement);
+            
+            // If CSS didn't load, try to reload it
+            if (computedStyle.position === 'static') {
+                console.log('CSS not loaded, attempting to reload...');
+                const link = document.querySelector('link[href="styles.css"]');
+                if (link) {
+                    link.href = './styles.css?' + new Date().getTime();
+                }
+            }
+            
+            document.body.removeChild(testElement);
+        });
+        
+        // CSS Loading Detection
+        function checkCSSLoaded() {
+            const link = document.querySelector('link[href*="styles.css"]');
+            if (link) {
+                link.addEventListener('load', function() {
+                    document.body.classList.add('css-loaded');
+                    console.log('CSS loaded successfully');
+                });
+                
+                link.addEventListener('error', function() {
+                    console.log('CSS failed to load');
+                    // Try alternative path
+                    this.href = './styles.css?' + new Date().getTime();
+                });
+            }
+        }
+        
+        // Run CSS detection
+        checkCSSLoaded();
+        
+        // Backup CSS loading method
+        setTimeout(function() {
+            const link = document.querySelector('link[href*="styles.css"]');
+            if (link && !document.body.classList.contains('css-loaded')) {
+                console.log('Attempting backup CSS loading...');
+                const backupLink = document.createElement('link');
+                backupLink.rel = 'stylesheet';
+                backupLink.href = './styles.css?' + new Date().getTime();
+                backupLink.onload = function() {
+                    document.body.classList.add('css-loaded');
+                    console.log('Backup CSS loaded successfully');
+                };
+                document.head.appendChild(backupLink);
+            }
+        }, 2000); // Wait 2 seconds before trying backup
+    </script>
+    <style>
+        /* Critical CSS - Basic fallback styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background-color: #ffffff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.3);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 50%, #99f6e4 100%);
+            padding-top: 80px;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #64748b;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+        
+        /* Hide critical CSS when main CSS loads */
+        .css-loaded .critical-css {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -30,6 +172,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="#system" class="nav-link">AI System</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#annotation" class="nav-link">Annotation</a>
                 </li>
                 <li class="nav-item">
                     <a href="#team" class="nav-link">Team</a>
@@ -78,10 +223,13 @@
                 </div>
             </div>
             <div class="hero-image fade-in">
-                <div class="hero-graphic">
-                    <i class="fas fa-brain"></i>
-                    <h3>AI Clinical Decision Support</h3>
-                    <p>Revolutionizing addiction treatment through intelligent algorithms</p>
+                <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="AI Brain and Medical Technology" class="hero-main-image">
+                <div class="hero-overlay">
+                    <div class="hero-graphic">
+                        <i class="fas fa-brain"></i>
+                        <h3>AI Clinical Decision Support</h3>
+                        <p>Revolutionizing addiction treatment through intelligent algorithms</p>
+                    </div>
                 </div>
                 <div class="hero-floating-card">
                     <i class="fas fa-chart-line"></i>
@@ -132,10 +280,13 @@
                     </div>
                 </div>
                 <div class="about-image fade-in">
-                    <div class="about-graphic">
-                        <i class="fas fa-brain"></i>
-                        <h3>AI-Powered Research</h3>
-                        <p>Advanced machine learning algorithms for clinical decision support in addiction treatment</p>
+                    <img src="https://images.unsplash.com/photo-1711409645921-ef3db0501f96?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Medical Research and AI Technology" class="about-main-image">
+                    <div class="about-overlay">
+                        <div class="about-graphic">
+                            <i class="fas fa-brain"></i>
+                            <h3>AI-Powered Research</h3>
+                            <p>Advanced machine learning algorithms for clinical decision support in addiction treatment</p>
+                        </div>
                     </div>
                     <div class="experience-badge">
                         <span class="years">NIMHANS</span>
@@ -246,7 +397,7 @@
                             <span class="tag">Outpatient</span>
                             <span class="tag">Risk Assessment</span>
                         </div>
-                        <div class="system-stats">
+                        <!-- <div class="system-stats">
                             <div class="stat">
                                 <span class="number">92%</span>
                                 <span class="label">Accuracy</span>
@@ -255,7 +406,7 @@
                                 <span class="number">24hr</span>
                                 <span class="label">Response Time</span>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 
@@ -277,7 +428,7 @@
                             <span class="tag">Personalized</span>
                             <span class="tag">Evidence-Based</span>
                         </div>
-                        <div class="system-stats">
+                        <!-- <div class="system-stats">
                             <div class="stat">
                                 <span class="number">89%</span>
                                 <span class="label">Success Rate</span>
@@ -286,7 +437,7 @@
                                 <span class="number">15+</span>
                                 <span class="label">Medications</span>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 
@@ -308,7 +459,7 @@
                             <span class="tag">Adjustment</span>
                             <span class="tag">Outcomes</span>
                         </div>
-                        <div class="system-stats">
+                        <!-- <div class="system-stats">
                             <div class="stat">
                                 <span class="number">85%</span>
                                 <span class="label">Improvement</span>
@@ -317,9 +468,113 @@
                                 <span class="number">30%</span>
                                 <span class="label">Relapse Reduction</span>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Annotation Platform Section -->
+    <section id="annotation" class="annotation">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Annotation Platform</h2>
+                <p class="section-subtitle fade-in">Secure and efficient data annotation tools for clinical research with privacy compliance.</p>
+            </div>
+            <div class="annotation-grid">
+                <div class="annotation-card fade-in">
+                    <div class="annotation-image">
+                        <div class="annotation-graphic">
+                            <i class="fas fa-tags"></i>
+                            <span>Label Studio</span>
+                        </div>
+                    </div>
+                    <div class="annotation-content">
+                        <div class="annotation-icon">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <h3>Clinical Notes Annotation</h3>
+                        <p>Our annotation environment (Label Studio) enables annotators to carefully review clinical notes and remove HIPAA-sensitive information such as patient names, ages, and other identifiers.</p>
+                        <div class="annotation-tags">
+                            <span class="tag">HIPAA Compliance</span>
+                            <span class="tag">Data Privacy</span>
+                            <span class="tag">Clinical Notes</span>
+                        </div>
+                        <!-- <div class="annotation-stats">
+                            <div class="stat">
+                                <span class="number">100%</span>
+                                <span class="label">Privacy Compliant</span>
+                            </div>
+                            <div class="stat">
+                                <span class="number">24/7</span>
+                                <span class="label">Secure Access</span>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                
+                <div class="annotation-card fade-in">
+                    <div class="annotation-image">
+                        <div class="annotation-graphic">
+                            <i class="fas fa-question-circle"></i>
+                            <span>Q&A Module</span>
+                        </div>
+                    </div>
+                    <div class="annotation-content">
+                        <div class="annotation-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <h3>Q&A Data Collection</h3>
+                        <p>A dedicated Platform supports Q&A data collection through manual annotation. This allows annotators to label responses for training and evaluation while ensuring data privacy and compliance.</p>
+                        <div class="annotation-tags">
+                            <span class="tag">Manual Annotation</span>
+                            <span class="tag">Training Data</span>
+                            <span class="tag">Evaluation</span>
+                        </div>
+                        <!-- <div class="annotation-stats">
+                            <div class="stat">
+                                <span class="number">Port 5001</span>
+                                <span class="label">Dedicated Module</span>
+                            </div>
+                            <div class="stat">
+                                <span class="number">Secure</span>
+                                <span class="label">Data Handling</span>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                
+                <!-- <div class="annotation-card fade-in">
+                    <div class="annotation-image">
+                        <div class="annotation-graphic">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Security & Compliance</span>
+                        </div>
+                    </div>
+                    <div class="annotation-content">
+                        <div class="annotation-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Security & Compliance</h3>
+                        <p>Comprehensive security measures and compliance protocols ensure that all clinical data is handled with the highest standards of privacy and confidentiality.</p>
+                        <div class="annotation-tags">
+                            <span class="tag">Security</span>
+                            <span class="tag">Compliance</span>
+                            <span class="tag">Confidentiality</span>
+                        </div>
+                        <div class="annotation-stats">
+                            <div class="stat">
+                                <span class="number">HIPAA</span>
+                                <span class="label">Compliant</span>
+                            </div>
+                            <div class="stat">
+                                <span class="number">Encrypted</span>
+                                <span class="label">Data Storage</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -340,9 +595,9 @@
                         </div>
                     </div>
                     <div class="member-info">
-                        <h3>Dr. Principal Investigator</h3>
-                        <p class="position">Principal Investigator</p>
-                        <p class="bio">Leading the research project with expertise in addiction psychiatry and clinical decision support systems.</p>
+                        <h3>abc</h3>
+                        <p class="position">abc dummy text</p>
+                        <p class="bio">abc dummy text</p>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-linkedin"></i></a>
                             <a href="#"><i class="fas fa-globe"></i></a>
@@ -358,9 +613,9 @@
                         </div>
                     </div>
                     <div class="member-info">
-                        <h3>AI/ML Specialist</h3>
-                        <p class="position">Technical Lead</p>
-                        <p class="bio">Expert in machine learning and artificial intelligence, developing the core algorithms for clinical decision support.</p>
+                        <h3>abc</h3>
+                        <p class="position">abc dummy text</p>
+                        <p class="bio">abc dummy text</p>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-linkedin"></i></a>
                             <a href="#"><i class="fab fa-github"></i></a>
@@ -376,9 +631,9 @@
                         </div>
                     </div>
                     <div class="member-info">
-                        <h3>Clinical Researcher</h3>
-                        <p class="position">Clinical Coordinator</p>
-                        <p class="bio">Coordinating clinical trials and validation studies for the AI system in real-world healthcare settings.</p>
+                        <h3>abc</h3>
+                        <p class="position">abc dummy text</p>
+                        <p class="bio">abc dummy text</p>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-linkedin"></i></a>
                             <a href="#"><i class="fas fa-globe"></i></a>
@@ -516,7 +771,9 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 NIMHANS AI-CDSS Research Project. All rights reserved. | Ethical Approval: IEC/2024/XXX | Clinical Trial Registration: CTRI/2024/XXX</p>
+                <p>&copy; 2024 NIMHANS AI-CDSS Research Project. All rights reserved. | 
+                    <!-- Ethical Approval: IEC/2024/XXX | Clinical Trial Registration: CTRI/2024/XXX -->
+                </p>
             </div>
         </div>
     </footer>
