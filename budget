@@ -1,0 +1,42 @@
+# GCP Cloud Hosting & Backup Cost Breakdown
+
+## Hosting Setup
+Looking at Google Compute Engine for hosting our apps. Here's what I'm thinking:
+
+**VM Configuration:**
+- n1-standard-2 instance (2 vCPU, 7.5 GB RAM)
+- 100 GB disk space
+- Should handle Nginx + Gunicorn + 4-5 Flask apps + MySQL/Postgres DB comfortably
+
+**Cost:** Around $50-55/month for the base VM, but with OS image and some overhead, realistically looking at $70-80/month total.
+
+## Backup Strategy
+For daily backups, planning to use Google Cloud Storage:
+
+**Backup Details:**
+- Total backup size: ~855 GB (covering all user directories)
+- Using rsync for daily sync to a bucket
+- Only keeping the latest copy (no historical versions to save costs)
+- Storage cost: $0.023/GB = ~$19.7/month
+- Adding some buffer for growth and operations: $20-25/month
+
+## Total Monthly Cost
+- **Hosting (VM + DB):** $70-80/month
+- **Backups (Cloud Storage):** $20-25/month
+- **Total:** $90-105/month (₹7,500-8,700/month)
+
+## Notes
+- All costs based on official GCP pricing
+- Compute Engine bills per second, Storage bills per GB
+- Since we're only keeping 1 daily backup copy (rsync overwrite), backup size stays constant at ~855 GB
+
+## What This Covers
+$90-105/month gets us:
+- Hosting for 4-5 dynamic Flask applications
+- Database running on the same VM
+- Daily automated backups to Cloud Storage
+
+## Good News
+Google Cloud gives new users $300 in free credits! That means we can run this entire setup for about 3 months without any cost while we test everything out.
+
+

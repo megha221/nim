@@ -1,0 +1,2961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIMHANS AI-CDSS - Alcohol & Nicotine Use Disorders Treatment</title>
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+    <link rel="stylesheet" href="styles.css" onerror="this.onerror=null; this.href='./styles.css';">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script>
+        // CSS Loading Fallback
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if CSS is loaded
+            const testElement = document.createElement('div');
+            testElement.style.position = 'absolute';
+            testElement.style.left = '-9999px';
+            testElement.style.top = '-9999px';
+            testElement.className = 'css-test';
+            document.body.appendChild(testElement);
+            
+            const computedStyle = window.getComputedStyle(testElement);
+            
+            // If CSS didn't load, try to reload it
+            if (computedStyle.position === 'static') {
+                console.log('CSS not loaded, attempting to reload...');
+                const link = document.querySelector('link[href="styles.css"]');
+                if (link) {
+                    link.href = './styles.css?' + new Date().getTime();
+                }
+            }
+            
+            document.body.removeChild(testElement);
+        });
+        
+        // CSS Loading Detection
+        function checkCSSLoaded() {
+            const link = document.querySelector('link[href*="styles.css"]');
+            if (link) {
+                link.addEventListener('load', function() {
+                    document.body.classList.add('css-loaded');
+                    console.log('CSS loaded successfully');
+                });
+                
+                link.addEventListener('error', function() {
+                    console.log('CSS failed to load');
+                    // Try alternative path
+                    this.href = './styles.css?' + new Date().getTime();
+                });
+            }
+        }
+        
+        // Run CSS detection
+        checkCSSLoaded();
+        
+        // Backup CSS loading method
+        setTimeout(function() {
+            const link = document.querySelector('link[href*="styles.css"]');
+            if (link && !document.body.classList.contains('css-loaded')) {
+                console.log('Attempting backup CSS loading...');
+                const backupLink = document.createElement('link');
+                backupLink.rel = 'stylesheet';
+                backupLink.href = './styles.css?' + new Date().getTime();
+                backupLink.onload = function() {
+                    document.body.classList.add('css-loaded');
+                    console.log('Backup CSS loaded successfully');
+                };
+                document.head.appendChild(backupLink);
+            }
+        }, 2000); // Wait 2 seconds before trying backup
+    </script>
+    <style>
+        /* Critical CSS - Basic fallback styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background-color: #ffffff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.3);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 50%, #99f6e4 100%);
+            padding-top: 80px;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #64748b;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+        
+        /* Hide critical CSS when main CSS loads */
+        .css-loaded .critical-css {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-brain"></i>
+                <span>NIMHANS AI-CDSS</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#research" class="nav-link">Research</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#system" class="nav-link">AI System</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#annotation" class="nav-link">Annotation</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#team" class="nav-link">Team</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title fade-in">AI-Powered Treatment for Alcohol & Nicotine Use Disorders</h1>
+                <p class="hero-subtitle fade-in">Revolutionizing addiction treatment through artificial intelligence-based Clinical Decision Support System (CDSS) for improved patient outcomes and clinical decision-making.</p>
+                <div class="hero-buttons fade-in">
+                    <button class="cta-button primary">
+                        <span>Learn About Research</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="cta-button secondary">
+                        <span>View System Demo</span>
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+                <div class="hero-stats fade-in">
+                    <div class="stat">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Accuracy Rate</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">1000+</span>
+                        <span class="stat-label">Cases Analyzed</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Disorders Covered</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image fade-in">
+                <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="AI Brain and Medical Technology" class="hero-main-image">
+                <div class="hero-overlay">
+                    <div class="hero-graphic">
+                        <i class="fas fa-brain"></i>
+                        <h3>AI Clinical Decision Support</h3>
+                        <p>Revolutionizing addiction treatment through intelligent algorithms</p>
+                    </div>
+                </div>
+                <div class="hero-floating-card">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Clinical Analytics</span>
+                </div>
+                <div class="hero-floating-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Evidence-Based</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">About Our Research Project</h2>
+                <p class="section-subtitle fade-in">Developing an artificial intelligence-based Clinical Decision Support System (CDSS) for the treatment of alcohol and nicotine use disorders at NIMHANS.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <div class="about-card">
+                        <div class="card-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>Research Objective</h3>
+                        <p>To develop an AI-based Clinical Decision Support System (CDSS) for the treatment of alcohol and nicotine use disorders (AUD & NUD) and measure the accuracy of its recommendations regarding the locus of care (inpatient or outpatient) and choice of medicines.</p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <div class="card-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Project Vision</h3>
+                        <p>To revolutionize addiction treatment by providing healthcare professionals with AI-powered decision support that improves treatment outcomes, reduces errors, and enhances patient care quality.</p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <div class="card-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Expected Impact</h3>
+                        <p>Improved clinical decision-making, better patient outcomes, reduced treatment costs, and enhanced healthcare delivery for individuals suffering from alcohol and nicotine use disorders.</p>
+                    </div>
+                </div>
+                <div class="about-image fade-in">
+                    <img src="https://images.unsplash.com/photo-1711409645921-ef3db0501f96?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Medical Research and AI Technology" class="about-main-image">
+                    <div class="about-overlay">
+                        <div class="about-graphic">
+                            <i class="fas fa-brain"></i>
+                            <h3>AI-Powered Research</h3>
+                            <p>Advanced machine learning algorithms for clinical decision support in addiction treatment</p>
+                        </div>
+                    </div>
+                    <div class="experience-badge">
+                        <span class="years">NIMHANS</span>
+                        <span class="text">Leading Research</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="research">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Research Methodology</h2>
+                <p class="section-subtitle fade-in">Comprehensive approach to developing and validating our AI-based Clinical Decision Support System.</p>
+            </div>
+            <div class="research-grid">
+                <div class="research-card fade-in">
+                    <div class="research-image">
+                        <div class="research-graphic">
+                            <i class="fas fa-database"></i>
+                            <span>Data Collection</span>
+                        </div>
+                    </div>
+                    <div class="research-content">
+                        <div class="research-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>Data Collection & Analysis</h3>
+                        <p>Comprehensive collection of clinical data from patients with alcohol and nicotine use disorders, including treatment history, outcomes, and clinical parameters.</p>
+                        <ul class="research-features">
+                            <li><i class="fas fa-check"></i> Patient demographics</li>
+                            <li><i class="fas fa-check"></i> Clinical assessments</li>
+                            <li><i class="fas fa-check"></i> Treatment outcomes</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="research-card fade-in">
+                    <div class="research-image">
+                        <div class="research-graphic">
+                            <i class="fas fa-brain"></i>
+                            <span>AI Development</span>
+                        </div>
+                    </div>
+                    <div class="research-content">
+                        <div class="research-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>AI Model Development</h3>
+                        <p>Development of machine learning algorithms to analyze clinical data and provide evidence-based recommendations for treatment decisions.</p>
+                        <ul class="research-features">
+                            <li><i class="fas fa-check"></i> Machine learning algorithms</li>
+                            <li><i class="fas fa-check"></i> Pattern recognition</li>
+                            <li><i class="fas fa-check"></i> Predictive modeling</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="research-card fade-in">
+                    <div class="research-image">
+                        <div class="research-graphic">
+                            <i class="fas fa-clipboard-check"></i>
+                            <span>Clinical Validation</span>
+                        </div>
+                    </div>
+                    <div class="research-content">
+                        <div class="research-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h3>Clinical Validation</h3>
+                        <p>Rigorous validation of AI recommendations against clinical expertise and established treatment protocols to ensure accuracy and reliability.</p>
+                        <ul class="research-features">
+                            <li><i class="fas fa-check"></i> Expert validation</li>
+                            <li><i class="fas fa-check"></i> Clinical trials</li>
+                            <li><i class="fas fa-check"></i> Outcome measurement</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI System Section -->
+    <section id="system" class="system">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">AI Clinical Decision Support System</h2>
+                <p class="section-subtitle fade-in">Our intelligent system provides evidence-based recommendations for treatment decisions in alcohol and nicotine use disorders.</p>
+            </div>
+            <div class="system-grid">
+                <div class="system-card fade-in">
+                    <div class="system-image">
+                        <div class="system-graphic">
+                            <i class="fas fa-hospital"></i>
+                            <span>Locus of Care</span>
+                        </div>
+                    </div>
+                    <div class="system-content">
+                        <div class="system-icon">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <h3>Locus of Care Decision</h3>
+                        <p>AI-powered recommendations for determining whether patients should receive inpatient or outpatient treatment based on clinical assessment.</p>
+                        <div class="system-tags">
+                            <span class="tag">Inpatient</span>
+                            <span class="tag">Outpatient</span>
+                            <span class="tag">Risk Assessment</span>
+                        </div>
+                        <!-- <div class="system-stats">
+                            <div class="stat">
+                                <span class="number">92%</span>
+                                <span class="label">Accuracy</span>
+                            </div>
+                            <div class="stat">
+                                <span class="number">24hr</span>
+                                <span class="label">Response Time</span>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                
+                <div class="system-card fade-in">
+                    <div class="system-image">
+                        <div class="system-graphic">
+                            <i class="fas fa-pills"></i>
+                            <span>Medication Choice</span>
+                        </div>
+                    </div>
+                    <div class="system-content">
+                        <div class="system-icon">
+                            <i class="fas fa-pills"></i>
+                        </div>
+                        <h3>Medication Selection</h3>
+                        <p>Intelligent medication recommendations based on patient history, severity, and evidence-based treatment protocols.</p>
+                        <div class="system-tags">
+                            <span class="tag">Pharmacotherapy</span>
+                            <span class="tag">Personalized</span>
+                            <span class="tag">Evidence-Based</span>
+                        </div>
+                        <!-- <div class="system-stats">
+                            <div class="stat">
+                                <span class="number">89%</span>
+                                <span class="label">Success Rate</span>
+                            </div>
+                            <div class="stat">
+                                <span class="number">15+</span>
+                                <span class="label">Medications</span>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                
+                <div class="system-card fade-in">
+                    <div class="system-image">
+                        <div class="system-graphic">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Treatment Monitoring</span>
+                        </div>
+                    </div>
+                    <div class="system-content">
+                        <div class="system-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Treatment Monitoring</h3>
+                        <p>Continuous monitoring and adjustment of treatment plans based on patient progress and clinical outcomes.</p>
+                        <div class="system-tags">
+                            <span class="tag">Monitoring</span>
+                            <span class="tag">Adjustment</span>
+                            <span class="tag">Outcomes</span>
+                        </div>
+                        <!-- <div class="system-stats">
+                            <div class="stat">
+                                <span class="number">85%</span>
+                                <span class="label">Improvement</span>
+                            </div>
+                            <div class="stat">
+                                <span class="number">30%</span>
+                                <span class="label">Relapse Reduction</span>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Annotation Platform Section -->
+    <section id="annotation" class="annotation">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Annotation Platform</h2>
+                <p class="section-subtitle fade-in">Secure and efficient data annotation tools for clinical research with privacy compliance.</p>
+            </div>
+            <div class="annotation-grid">
+                <div class="annotation-card fade-in">
+                    <div class="annotation-image">
+                        <div class="annotation-graphic">
+                            <i class="fas fa-tags"></i>
+                            <span>Label Studio</span>
+                        </div>
+                    </div>
+                    <div class="annotation-content">
+                        <div class="annotation-icon">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <h3>Clinical Notes Annotation</h3>
+                        <p>Our annotation environment (Label Studio) enables annotators to carefully review clinical notes and remove HIPAA-sensitive information such as patient names, ages, and other identifiers.</p>
+                        <div class="annotation-tags">
+                            <span class="tag">HIPAA Compliance</span>
+                            <span class="tag">Data Privacy</span>
+                            <span class="tag">Clinical Notes</span>
+                        </div>
+                        <!-- <div class="annotation-stats">
+                            <div class="stat">
+                                <span class="number">100%</span>
+                                <span class="label">Privacy Compliant</span>
+                            </div>
+                            <div class="stat">
+                                <span class="number">24/7</span>
+                                <span class="label">Secure Access</span>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                
+                <div class="annotation-card fade-in">
+                    <div class="annotation-image">
+                        <div class="annotation-graphic">
+                            <i class="fas fa-question-circle"></i>
+                            <span>Q&A Module</span>
+                        </div>
+                    </div>
+                    <div class="annotation-content">
+                        <div class="annotation-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <h3>Q&A Data Collection</h3>
+                        <p>A dedicated Platform supports Q&A data collection through manual annotation. This allows annotators to label responses for training and evaluation while ensuring data privacy and compliance.</p>
+                        <div class="annotation-tags">
+                            <span class="tag">Manual Annotation</span>
+                            <span class="tag">Training Data</span>
+                            <span class="tag">Evaluation</span>
+                        </div>
+                        <!-- <div class="annotation-stats">
+                            <div class="stat">
+                                <span class="number">Port 5001</span>
+                                <span class="label">Dedicated Module</span>
+                            </div>
+                            <div class="stat">
+                                <span class="number">Secure</span>
+                                <span class="label">Data Handling</span>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                
+                <!-- <div class="annotation-card fade-in">
+                    <div class="annotation-image">
+                        <div class="annotation-graphic">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Security & Compliance</span>
+                        </div>
+                    </div>
+                    <div class="annotation-content">
+                        <div class="annotation-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Security & Compliance</h3>
+                        <p>Comprehensive security measures and compliance protocols ensure that all clinical data is handled with the highest standards of privacy and confidentiality.</p>
+                        <div class="annotation-tags">
+                            <span class="tag">Security</span>
+                            <span class="tag">Compliance</span>
+                            <span class="tag">Confidentiality</span>
+                        </div>
+                        <div class="annotation-stats">
+                            <div class="stat">
+                                <span class="number">HIPAA</span>
+                                <span class="label">Compliant</span>
+                            </div>
+                            <div class="stat">
+                                <span class="number">Encrypted</span>
+                                <span class="label">Data Storage</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Research Team</h2>
+                <p class="section-subtitle fade-in">Our multidisciplinary team combines expertise in psychiatry, AI/ML, and clinical research to advance addiction treatment.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member fade-in">
+                    <div class="member-image">
+                        <div class="member-graphic">
+                            <i class="fas fa-user-md"></i>
+                            <span>Principal Investigator</span>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>abc</h3>
+                        <p class="position">abc dummy text</p>
+                        <p class="bio">abc dummy text</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fas fa-globe"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member fade-in">
+                    <div class="member-image">
+                        <div class="member-graphic">
+                            <i class="fas fa-laptop-code"></i>
+                            <span>AI/ML Specialist</span>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>abc</h3>
+                        <p class="position">abc dummy text</p>
+                        <p class="bio">abc dummy text</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member fade-in">
+                    <div class="member-image">
+                        <div class="member-graphic">
+                            <i class="fas fa-microscope"></i>
+                            <span>Clinical Researcher</span>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>abc</h3>
+                        <p class="position">abc dummy text</p>
+                        <p class="bio">abc dummy text</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fas fa-globe"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Get In Touch</h2>
+                <p class="section-subtitle fade-in">Interested in our research or want to collaborate? Contact our team for more information about the AI-CDSS project.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info fade-in">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Research Email</h4>
+                            <p>research@nimhans.ac.in</p>
+                            <p>aicdss@nimhans.ac.in</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Contact Numbers</h4>
+                            <p>+91 (080) 2699 5000</p>
+                            <p>+91 (080) 2699 5001</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>NIMHANS Address</h4>
+                            <p>National Institute of Mental Health and Neurosciences<br>Hosur Road, Bangalore<br>Karnataka 560029, India</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form fade-in">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="organization">Organization</label>
+                        <input type="text" id="organization" name="organization" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="interest">Interest Area</label>
+                        <select id="interest" name="interest" required>
+                            <option value="">Select your interest</option>
+                            <option value="research-collaboration">Research Collaboration</option>
+                            <option value="clinical-trials">Clinical Trials</option>
+                            <option value="system-demo">System Demo</option>
+                            <option value="publication">Publication</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell us about your interest in our AI-CDSS research project..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-brain"></i>
+                        <span>NIMHANS AI-CDSS</span>
+                    </div>
+                    <p>Advancing addiction treatment through artificial intelligence-based Clinical Decision Support System for alcohol and nicotine use disorders.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Research Areas</h4>
+                    <ul>
+                        <li><a href="#">Alcohol Use Disorder</a></li>
+                        <li><a href="#">Nicotine Use Disorder</a></li>
+                        <li><a href="#">Clinical Decision Support</a></li>
+                        <li><a href="#">AI in Healthcare</a></li>
+                        <li><a href="#">Treatment Outcomes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Project</h4>
+                    <ul>
+                        <li><a href="#">About Research</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Publications</a></li>
+                        <li><a href="#">Clinical Trials</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Research Papers</a></li>
+                        <li><a href="#">Clinical Guidelines</a></li>
+                        <li><a href="#">Training Materials</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 NIMHANS AI-CDSS Research Project. All rights reserved. | 
+                    <!-- Ethical Approval: IEC/2024/XXX | Clinical Trial Registration: CTRI/2024/XXX -->
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #1e293b;
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.3);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0891b2;
+    text-decoration: none;
+}
+
+.nav-logo i {
+    margin-right: 0.5rem;
+    font-size: 1.8rem;
+    color: #0891b2;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #475569;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-link:hover {
+    color: #0891b2;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: #0891b2;
+    font-weight: 600;
+}
+
+.nav-link.active::after {
+    width: 100%;
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background: #475569;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 50%, #99f6e4 100%);
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+    z-index: 1;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(37,99,235,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #1e293b 0%, #0891b2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: #64748b;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button.primary {
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+    color: white;
+    box-shadow: 0 10px 25px rgba(8, 145, 178, 0.3);
+}
+
+.cta-button.secondary {
+    background: transparent;
+    color: #0891b2;
+    border: 2px solid #0891b2;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+}
+
+.cta-button.primary:hover {
+    box-shadow: 0 15px 35px rgba(8, 145, 178, 0.4);
+}
+
+.cta-button.secondary:hover {
+    background: #0891b2;
+    color: white;
+}
+
+.cta-button i {
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover i {
+    transform: translateX(5px);
+}
+
+.hero-stats {
+    display: flex;
+    gap: 2rem;
+}
+
+.hero-stats .stat {
+    text-align: center;
+}
+
+.hero-stats .stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0891b2;
+    margin-bottom: 0.25rem;
+}
+
+.hero-stats .stat-label {
+    font-size: 0.875rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.hero-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-main-image {
+    width: 100%;
+    max-width: 500px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(8, 145, 178, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.hero-main-image:hover {
+    transform: scale(1.05);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(8, 145, 178, 0.8) 0%, rgba(14, 116, 144, 0.8) 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.hero-image:hover .hero-overlay {
+    opacity: 1;
+}
+
+.hero-graphic {
+    width: 100%;
+    max-width: 500px;
+    height: 400px;
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    box-shadow: 0 20px 40px rgba(8, 145, 178, 0.3);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.hero-graphic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+.hero-graphic i {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    z-index: 2;
+    position: relative;
+}
+
+.hero-graphic h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    z-index: 2;
+    position: relative;
+}
+
+.hero-graphic p {
+    font-size: 1rem;
+    line-height: 1.4;
+    max-width: 350px;
+    z-index: 2;
+    position: relative;
+    opacity: 0.9;
+}
+
+.hero-graphic:hover {
+    transform: scale(1.05);
+}
+
+.hero-floating-card {
+    position: absolute;
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: #1e293b;
+    animation: float 6s ease-in-out infinite;
+    z-index: 3;
+}
+
+.hero-floating-card:nth-child(2) {
+    top: 10%;
+    left: -10%;
+    animation-delay: -2s;
+    z-index: 4;
+}
+
+.hero-floating-card:nth-child(3) {
+    bottom: 10%;
+    right: -10%;
+    animation-delay: -4s;
+    z-index: 4;
+}
+
+.hero-floating-card i {
+    color: #0891b2;
+    font-size: 1.2rem;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+
+.scroll-arrow {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #0891b2;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-10px); }
+    60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* Section Headers */
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #1e293b 0%, #0891b2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* About Section */
+.about {
+    padding: 6rem 0;
+    background: #ffffff;
+    position: relative;
+    z-index: 2;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.about-card {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 20px;
+    border-left: 4px solid #0891b2;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.card-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.about-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+.about-card p {
+    color: #64748b;
+    line-height: 1.7;
+}
+
+.about-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-main-image {
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(8, 145, 178, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.about-main-image:hover {
+    transform: scale(1.05);
+}
+
+.about-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(8, 145, 178, 0.8) 0%, rgba(14, 116, 144, 0.8) 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.about-image:hover .about-overlay {
+    opacity: 1;
+}
+
+.about-graphic {
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    box-shadow: 0 20px 40px rgba(8, 145, 178, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-graphic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+.about-graphic i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    z-index: 2;
+    position: relative;
+}
+
+.about-graphic h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    z-index: 2;
+    position: relative;
+}
+
+.about-graphic p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    max-width: 280px;
+    z-index: 2;
+    position: relative;
+    opacity: 0.9;
+}
+
+.experience-badge {
+    position: absolute;
+    bottom: -20px;
+    right: 20px;
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(8, 145, 178, 0.3);
+}
+
+.experience-badge .years {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+}
+
+.experience-badge .text {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Research Section */
+.research {
+    padding: 6rem 0;
+    background: #f8fafc;
+    position: relative;
+    z-index: 2;
+}
+
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.research-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.research-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.research-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.research-graphic {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.research-graphic i {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.research-graphic span {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.research-card:hover .research-graphic {
+    transform: scale(1.05);
+}
+
+.research-content {
+    padding: 2rem;
+}
+
+.research-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.research-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.research-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+.research-content p {
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.research-features {
+    list-style: none;
+}
+
+.research-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.research-features li i {
+    color: #10b981;
+    font-size: 0.8rem;
+}
+
+/* AI System Section */
+.system {
+    padding: 6rem 0;
+    background: #ffffff;
+    position: relative;
+    z-index: 2;
+}
+
+.system-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.system-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.system-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.system-card:hover::before {
+    transform: scaleX(1);
+}
+
+.system-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.system-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.system-graphic {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.system-graphic i {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.system-graphic span {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.system-card:hover .system-graphic {
+    transform: scale(1.05);
+}
+
+.system-content {
+    padding: 2rem;
+}
+
+.system-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.system-card:hover .system-icon {
+    transform: scale(1.1);
+}
+
+.system-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.system-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+.system-content p {
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.system-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.tag {
+    background: #e0f2fe;
+    color: #0891b2;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.system-stats {
+    display: flex;
+    gap: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.system-stats .stat {
+    text-align: center;
+}
+
+.system-stats .number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0891b2;
+    margin-bottom: 0.25rem;
+}
+
+.system-stats .label {
+    font-size: 0.875rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* Annotation Platform Section */
+.annotation {
+    padding: 6rem 0;
+    background: #ffffff;
+    position: relative;
+    z-index: 2;
+}
+
+.annotation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.annotation-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.annotation-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.annotation-card:hover::before {
+    transform: scaleX(1);
+}
+
+.annotation-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.annotation-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.annotation-graphic {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.annotation-graphic i {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.annotation-graphic span {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.annotation-card:hover .annotation-graphic {
+    transform: scale(1.05);
+}
+
+.annotation-content {
+    padding: 2rem;
+}
+
+.annotation-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.annotation-card:hover .annotation-icon {
+    transform: scale(1.1);
+}
+
+.annotation-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.annotation-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+.annotation-content p {
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.annotation-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.annotation-stats {
+    display: flex;
+    gap: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.annotation-stats .stat {
+    text-align: center;
+}
+
+.annotation-stats .number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0891b2;
+    margin-bottom: 0.25rem;
+}
+
+.annotation-stats .label {
+    font-size: 0.875rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* Team Section */
+.team {
+    padding: 6rem 0;
+    background: #f8fafc;
+    position: relative;
+    z-index: 2;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.team-member {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.member-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.member-graphic {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.member-graphic i {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.member-graphic span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    max-width: 120px;
+    line-height: 1.2;
+}
+
+.team-member:hover .member-graphic {
+    transform: scale(1.05);
+}
+
+.member-info {
+    padding: 2rem;
+    text-align: center;
+}
+
+.member-info h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.member-info .position {
+    color: #0891b2;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.member-info .bio {
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: #f1f5f9;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: #0891b2;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Contact Section */
+.contact {
+    padding: 6rem 0;
+    background: #ffffff;
+    position: relative;
+    z-index: 2;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contact-card {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-icon i {
+    font-size: 1.25rem;
+    color: white;
+}
+
+.contact-details h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.contact-details p {
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 0.25rem;
+}
+
+.contact-form {
+    background: #f8fafc;
+    padding: 2.5rem;
+    border-radius: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #0891b2;
+    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.submit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    justify-content: center;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(8, 145, 178, 0.3);
+}
+
+.submit-btn i {
+    transition: transform 0.3s ease;
+}
+
+.submit-btn:hover i {
+    transform: translateX(5px);
+}
+
+/* Footer */
+.footer {
+    background: #1e293b;
+    color: white;
+    padding: 3rem 0 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.footer-logo i {
+    margin-right: 0.5rem;
+    color: #0891b2;
+}
+
+.footer-section p {
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.footer-section h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #0891b2;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    background: #334155;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background: #0891b2;
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #334155;
+    color: #cbd5e1;
+    font-size: 0.9rem;
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding: 2rem 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-stats {
+        justify-content: center;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .about-graphic {
+        max-width: 100%;
+        height: 250px;
+    }
+    
+    .about-graphic i {
+        font-size: 3rem;
+    }
+    
+    .about-graphic h3 {
+        font-size: 1.25rem;
+    }
+    
+    .about-graphic p {
+        font-size: 0.85rem;
+        max-width: 100%;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .research-grid,
+    .system-grid,
+    .annotation-grid,
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-floating-card {
+        display: none;
+    }
+    
+    .hero-main-image {
+        max-width: 100%;
+        height: 300px;
+    }
+    
+    .about-main-image {
+        max-width: 100%;
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .research-card,
+    .system-card,
+    .annotation-card,
+    .team-member {
+        margin: 0 1rem;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    .cta-button {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* Smooth scrolling for older browsers */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Loading animation */
+.loading {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.loading.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0891b2;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0e7490;
+}// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Initialize all components
+    initNavigation();
+    initAnimations();
+    initFormHandling();
+    initInteractiveElements();
+    initScrollEffects();
+    
+    // Mobile Navigation Toggle
+    function initNavigation() {
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                
+                // Animate hamburger bars
+                const bars = hamburger.querySelectorAll('.bar');
+                bars.forEach((bar, index) => {
+                    if (hamburger.classList.contains('active')) {
+                        if (index === 0) bar.style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        if (index === 1) bar.style.opacity = '0';
+                        if (index === 2) bar.style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                    } else {
+                        bar.style.transform = 'none';
+                        bar.style.opacity = '1';
+                    }
+                });
+            });
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    
+                    // Reset hamburger bars
+                    const bars = hamburger.querySelectorAll('.bar');
+                    bars.forEach(bar => {
+                        bar.style.transform = 'none';
+                        bar.style.opacity = '1';
+                    });
+                });
+            });
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Navbar background change on scroll
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                    navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                    navbar.style.boxShadow = 'none';
+                }
+            });
+        }
+    }
+    
+    // Initialize animations
+    function initAnimations() {
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Animate numbers in stats
+        const statNumbers = document.querySelectorAll('.stat-number, .number');
+        const numberObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateNumber(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        statNumbers.forEach(number => {
+            numberObserver.observe(number);
+        });
+    }
+    
+    // Animate number counting
+    function animateNumber(element) {
+        const finalNumber = element.textContent;
+        const isPercentage = finalNumber.includes('%');
+        const isPlus = finalNumber.includes('+');
+        const isK = finalNumber.includes('K');
+        
+        let numericValue = parseFloat(finalNumber.replace(/[^0-9.]/g, ''));
+        let currentValue = 0;
+        const increment = numericValue / 50;
+        const duration = 2000;
+        const stepTime = duration / 50;
+        
+        const timer = setInterval(() => {
+            currentValue += increment;
+            if (currentValue >= numericValue) {
+                currentValue = numericValue;
+                clearInterval(timer);
+            }
+            
+            let displayValue = Math.floor(currentValue);
+            if (isPercentage) displayValue += '%';
+            if (isPlus) displayValue += '+';
+            if (isK) displayValue += 'K';
+            
+            element.textContent = displayValue;
+        }, stepTime);
+    }
+    
+    // Initialize form handling
+    function initFormHandling() {
+        // CTA Button click handlers
+        const ctaButtons = document.querySelectorAll('.cta-button');
+        ctaButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (this.classList.contains('primary')) {
+                    // Scroll to research section
+                    const researchSection = document.querySelector('#research');
+                    if (researchSection) {
+                        const offsetTop = researchSection.offsetTop - 80;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                } else if (this.classList.contains('secondary')) {
+                    // Show demo modal or video
+                    showDemoModal();
+                }
+            });
+        });
+        
+        // Contact form handling
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(this);
+                const name = formData.get('name');
+                const email = formData.get('email');
+                const organization = formData.get('organization');
+                const service = formData.get('service');
+                const message = formData.get('message');
+                
+                // Enhanced validation
+                if (!name || !email || !organization || !service || !message) {
+                    showNotification('Please fill in all fields.', 'error');
+                    return;
+                }
+                
+                if (!isValidEmail(email)) {
+                    showNotification('Please enter a valid email address.', 'error');
+                    return;
+                }
+                
+                if (name.length < 2) {
+                    showNotification('Name must be at least 2 characters long.', 'error');
+                    return;
+                }
+                
+                if (message.length < 10) {
+                    showNotification('Message must be at least 10 characters long.', 'error');
+                    return;
+                }
+                
+                // Simulate form submission
+                const submitBtn = this.querySelector('.submit-btn');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
+                submitBtn.disabled = true;
+                
+                // Simulate API call with progress
+                let progress = 0;
+                const progressInterval = setInterval(() => {
+                    progress += 20;
+                    if (progress >= 100) {
+                        clearInterval(progressInterval);
+                        showNotification('Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.', 'success');
+                        this.reset();
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }
+                }, 400);
+            });
+        }
+        
+        // Form field animations
+        const formInputs = document.querySelectorAll('.form-group input, .form-group textarea, .form-group select');
+        formInputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+            
+            input.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.parentElement.classList.remove('focused');
+                }
+            });
+        });
+    }
+    
+    // Initialize interactive elements
+    function initInteractiveElements() {
+        // System card hover effects
+        document.querySelectorAll('.system-card, .research-card, .team-member').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        // Team member social links
+        document.querySelectorAll('.social-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const platform = this.querySelector('i').className.includes('linkedin') ? 'LinkedIn' : 
+                               this.querySelector('i').className.includes('twitter') ? 'Twitter' : 
+                               this.querySelector('i').className.includes('github') ? 'GitHub' : 'Website';
+                showNotification(`Opening ${platform} profile...`, 'info');
+            });
+        });
+        
+        // Research features toggle
+        document.querySelectorAll('.research-features li').forEach(feature => {
+            feature.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+    }
+    
+    // Initialize scroll effects
+    function initScrollEffects() {
+        // Active navigation highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', function() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    }
+    
+    // Email validation function
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+    
+    // Show demo modal
+    function showDemoModal() {
+        const modal = document.createElement('div');
+        modal.className = 'demo-modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Product Demo</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="video-placeholder">
+                        <i class="fas fa-play-circle"></i>
+                        <p>Demo video would play here</p>
+                    </div>
+                    <p>Experience our healthcare solutions in action. Contact us for a personalized demo.</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-secondary" onclick="this.closest('.demo-modal').remove()">Close</button>
+                    <button class="btn-primary" onclick="document.querySelector('#contact').scrollIntoView({behavior: 'smooth'})">Request Demo</button>
+                </div>
+            </div>
+        `;
+        
+        // Add styles
+        modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        `;
+        
+        const modalContent = modal.querySelector('.modal-content');
+        modalContent.style.cssText = `
+            background: white;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        `;
+        
+        document.body.appendChild(modal);
+        
+        // Animate in
+        setTimeout(() => {
+            modal.style.opacity = '1';
+            modalContent.style.transform = 'scale(1)';
+        }, 10);
+        
+        // Close functionality
+        const closeBtn = modal.querySelector('.modal-close');
+        closeBtn.addEventListener('click', () => {
+            modal.style.opacity = '0';
+            modalContent.style.transform = 'scale(0.8)';
+            setTimeout(() => modal.remove(), 300);
+        });
+        
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.opacity = '0';
+                modalContent.style.transform = 'scale(0.8)';
+                setTimeout(() => modal.remove(), 300);
+            }
+        });
+    }
+    
+    // Enhanced notification system
+    function showNotification(message, type = 'info') {
+        // Remove existing notifications
+        const existingNotification = document.querySelector('.notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+        
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        
+        const icon = type === 'success' ? 'fa-check-circle' : 
+                   type === 'error' ? 'fa-exclamation-circle' : 
+                   type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
+        
+        notification.innerHTML = `
+            <div class="notification-content">
+                <i class="fas ${icon}"></i>
+                <span>${message}</span>
+                <button class="notification-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        `;
+        
+        // Add styles
+        const colors = {
+            success: '#10b981',
+            error: '#ef4444',
+            warning: '#f59e0b',
+            info: '#3b82f6'
+        };
+        
+        notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: ${colors[type]};
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            z-index: 10000;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            max-width: 400px;
+            font-weight: 500;
+        `;
+        
+        // Add to page
+        document.body.appendChild(notification);
+        
+        // Animate in
+        setTimeout(() => {
+            notification.style.transform = 'translateX(0)';
+        }, 100);
+        
+        // Close button functionality
+        const closeBtn = notification.querySelector('.notification-close');
+        closeBtn.addEventListener('click', () => {
+            notification.style.transform = 'translateX(400px)';
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        });
+        
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.style.transform = 'translateX(400px)';
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }
+        }, 5000);
+    }
+    
+    // Add loading animation
+    window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+        
+        // Animate hero elements sequentially
+        const heroElements = document.querySelectorAll('.hero .fade-in');
+        heroElements.forEach((element, index) => {
+            setTimeout(() => {
+                element.classList.add('visible');
+            }, index * 100); // Reduced from 200ms to 100ms
+        });
+    });
+    
+    // Performance optimization: Throttle scroll events
+    function throttle(func, limit) {
+        let inThrottle;
+        return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    }
+    
+    // Apply throttling to scroll events for better performance
+    const throttledScrollHandler = throttle(function() {
+        // Scroll-based animations and effects
+    }, 16); // ~60fps
+    
+    window.addEventListener('scroll', throttledScrollHandler);
+    
+    // Add keyboard navigation support
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.querySelector('.demo-modal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+    });
+    
+    // Add touch support for mobile
+    if ('ontouchstart' in window) {
+        document.querySelectorAll('.system-card, .research-card, .team-member').forEach(card => {
+            card.addEventListener('touchstart', function() {
+                this.style.transform = 'translateY(-5px) scale(1.01)';
+            });
+            
+            card.addEventListener('touchend', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    }
+});
+
+// Add CSS for additional styles
+const additionalStyles = `
+    .nav-link.active {
+        color: #2563eb !important;
+    }
+    
+    .nav-link.active::after {
+        width: 100% !important;
+    }
+    
+    .form-group.focused label {
+        color: #2563eb;
+        transform: translateY(-20px) scale(0.8);
+    }
+    
+    .research-features li.active {
+        color: #2563eb;
+        font-weight: 600;
+    }
+    
+    .demo-modal .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .demo-modal .modal-body {
+        padding: 1.5rem;
+    }
+    
+    .demo-modal .modal-footer {
+        padding: 1.5rem;
+        border-top: 1px solid #e2e8f0;
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-end;
+    }
+    
+    .video-placeholder {
+        background: #f1f5f9;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+    }
+    
+    .video-placeholder i {
+        font-size: 3rem;
+        color: #64748b;
+        margin-bottom: 1rem;
+    }
+    
+    .btn-primary, .btn-secondary {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-primary {
+        background: #2563eb;
+        color: white;
+    }
+    
+    .btn-secondary {
+        background: #f1f5f9;
+        color: #64748b;
+    }
+    
+    .btn-primary:hover {
+        background: #1d4ed8;
+        transform: translateY(-2px);
+    }
+    
+    .btn-secondary:hover {
+        background: #e2e8f0;
+        transform: translateY(-2px);
+    }
+    
+    body.loaded .hero {
+        opacity: 1;
+    }
+    
+    .hero {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+`;
+
+// Inject additional styles
+const styleSheet = document.createElement('style');
+styleSheet.textContent = additionalStyles;
+document.head.appendChild(styleSheet);
